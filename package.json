@@ -17,7 +17,7 @@
     "dist/",
     "lib/"
   ],
-  "main": "lib/Relay.js",
+  "main": "dist/relay.min.js",
   "repository": "facebook/relay",
   "scripts": {
     "build": "gulp",
