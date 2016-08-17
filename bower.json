@@ -1,0 +1,6 @@
+{
+  "name": "generic-relay",
+  "description": "A modified version of Relay to work without React",
+  "version": "0.1.0",
+  "main": "dist/relay.min.js"
+}
