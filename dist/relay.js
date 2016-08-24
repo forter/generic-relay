@@ -8327,6 +8327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var querySet = {};
 	      var fragmentPointers = null;
 	      if (forceFetch || !shallowEqual(nextVariables, lastVariables)) {
+            this.variables = nextVariables;
 	        var _createQuerySetAndFragmentPointers = createQuerySetAndFragmentPointers(containerName, storeData, nextVariables, this.route, containerSpec, this.queryData);
 
 	        querySet = _createQuerySetAndFragmentPointers.querySet;
