@@ -12665,8 +12665,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   true ?  true ? invariant(false, 'RelayQL: Unexpected invocation at runtime. Either the Babel transform ' + 'was not set up, or it failed to identify this call site. Make sure it ' + 'is being used verbatim as `Relay.QL`.') : invariant(false) : undefined;
 	}
 
-    //relay babel plugin is newer than generic relay, and uses this function which the generic relay ignores so we added it so it doens't crash when it tries to use it.
-    RelayQL.__id = () => Date.now();
+    	//relay babel plugin is newer than generic relay, and uses this function which the generic relay ignores so we added it so it doens't crash when it tries to use it.
+    	RelayQL.__id = function() { return Date.now() };
 
 	/**
 	 * Private helper methods used by the transformed code.
