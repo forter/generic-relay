@@ -399,7 +399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return this.__concreteNode__.directives.map(function (directive) {
 	        return {
 	          name: directive.name,
-	          arguments: callsFromGraphQL(directive.arguments, _this2.__variables__)
+	          arguments: callsFromGraphQL(directive.arguments || directive.args, _this2.__variables__)
 	        };
 	      });
 	    }
