@@ -11028,7 +11028,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	      dataIDs.forEach(function (dataID) {
 	        trackedChildren.push.apply(trackedChildren, _toConsumableArray(tracker.getTrackedChildrenForID(dataID)));
 	      });
-	      var trackedField = fatField.clone(trackedChildren);
+          var newTrackedChildren = [];
+          var seenFields = [];
+          for(var i = trackedChildren.length - 1; i >= 0; i--) {
+            var child = trackedChildren[i];
+            var children = child.getChildren();
+            var found = false;
+            for(var j = 0; j < children.length; j++) {
+              var fieldName = children[j].__concreteNode__.fieldName;
+              if(fieldName !== 'id' && seenFields.indexOf(fieldName) === -1) {
+                seenFields.push(fieldName);
+              } else if(fieldName !== 'id') {
+                found = true;
+                break;
+              }
+            }
+            if(!found) {
+              newTrackedChildren.push(child);
+            }
+          }
+	      var trackedField = fatField.clone(newTrackedChildren);
 	      if (trackedField) {
 	        var mutationField = intersectRelayQuery(trackedField, fatField);
 	        if (mutationField) {
