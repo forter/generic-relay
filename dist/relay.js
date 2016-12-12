@@ -11033,19 +11033,18 @@ return /******/ (function(modules) { // webpackBootstrap
           for(var i = trackedChildren.length - 1; i >= 0; i--) {
             var child = trackedChildren[i];
             var children = child.getChildren();
-            var found = false;
             for(var j = 0; j < children.length; j++) {
               var fieldName = children[j].__concreteNode__.fieldName;
-              if(fieldName !== 'id' && seenFields.indexOf(fieldName) === -1) {
-                seenFields.push(fieldName);
-              } else if(fieldName !== 'id') {
-                found = true;
-                break;
+              var variables = children[j].__variables__;
+              if(fieldName !== 'components' && variables && Object.keys(variables).length > 0) {
+                if(seenFields.indexOf(fieldName) === -1) {
+                  seenFields.push(fieldName);
+                } else {
+                  delete children[j];
+                }
               }
             }
-            if(!found) {
-              newTrackedChildren.push(child);
-            }
+            newTrackedChildren.push(child);
           }
 	      var trackedField = fatField.clone(newTrackedChildren);
 	      if (trackedField) {
