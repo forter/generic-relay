@@ -11033,20 +11033,20 @@ return /******/ (function(modules) { // webpackBootstrap
           for(var i = trackedChildren.length - 1; i >= 0; i--) {
             var child = trackedChildren[i];
             var children = child.getChildren();
-            for(var j = 0; j < children.length; j++) {                                                                                                                                                                                                                     │··
-              if(!children[j]) {                                                                                                                                                                                                                                           │··
-                continue;                                                                                                                                                                                                                                                  │··
-              }                                                                                                                                                                                                                                                            │··
-                                                                                                                                                                                                                                                                           │··
-              var fieldName = children[j].__concreteNode__.fieldName;                                                                                                                                                                                                      │··
-              var variables = children[j].__variables__;                                                                                                                                                                                                                   │··
-              if(fieldName !== 'id' && fieldName !== 'components' && variables && Object.keys(variables).length > 0) {                                                                                                                                                     │··
-                if(seenFields.indexOf(fieldName) === -1) {                                                                                                                                                                                                                 │··
-                  seenFields.push(fieldName);                                                                                                                                                                                                                              │··
-                } else {                                                                                                                                                                                                                                                   │··
-                  delete children[j];                                                                                                                                                                                                                                      │··
-                }                                                                                                                                                                                                                                                          │··
-              }                                                                                                                                                                                                                                                            │··
+            for(var j = 0; j < children.length; j++) {
+              if(!children[j]) {
+                continue;
+              }
+
+              var fieldName = children[j].__concreteNode__.fieldName;
+              var variables = children[j].__variables__;
+              if(fieldName !== 'id' && fieldName !== 'components' && variables && Object.keys(variables).length > 0) {
+                if(seenFields.indexOf(fieldName) === -1) {
+                  seenFields.push(fieldName);
+                } else {
+                  delete children[j];
+                }
+              }
             }
             newTrackedChildren.push(child);
           }
