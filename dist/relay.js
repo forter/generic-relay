@@ -11030,9 +11030,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
           var newTrackedChildren = [];
           var seenFields = [];
+          var seenChildren = [];
           for(var i = trackedChildren.length - 1; i >= 0; i--) {
             var child = trackedChildren[i];
+            if(seenChildren.indexOf(child) !== -1) {
+              continue;
+            }
+
+            seenChildren.push(child);
             var children = child.getChildren();
+            var found = false;
             for(var j = 0; j < children.length; j++) {
               if(!children[j]) {
                 continue;
@@ -11044,11 +11051,14 @@ return /******/ (function(modules) { // webpackBootstrap
                 if(seenFields.indexOf(fieldName) === -1) {
                   seenFields.push(fieldName);
                 } else {
-                  delete children[j];
+                  found = true;
+                  break;
                 }
               }
             }
-            newTrackedChildren.push(child);
+            if(!found) {
+              newTrackedChildren.push(child);
+            }
           }
 	      var trackedField = fatField.clone(newTrackedChildren);
 	      if (trackedField) {
