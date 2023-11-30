@@ -22,17 +22,17 @@
   "scripts": {
     "build": "gulp",
     "lint": "eslint .",
-    "prepublish": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json && npm run build",
     "test": "f() { EXIT=0; npm run typecheck || EXIT=$?; NODE_ENV=test jest $@ || EXIT=$?; exit $EXIT; }; f",
     "typecheck": "flow check src/",
     "update-schema": "babel-node ./scripts/jest/updateSchema.js"
   },
   "dependencies": {
+    "babel-preset-fbjs": "^3.4.0",
     "babel-runtime": "5.8.24",
-    "fbjs": "^0.5.1"
+    "fbjs": "3.0.5"
   },
   "peerDependencies": {
-    "babel-relay-plugin": "0.6.3"
+    "babel-relay-plugin": "0.7.3"
   },
   "devDependencies": {
     "babel": "^5.8.25",
@@ -41,8 +41,8 @@
     "del": "^1.2.0",
     "eslint": "^1.3.1",
     "eslint-plugin-react": "^3.3.1",
-    "fbjs-scripts": "^0.5.0",
-    "flow-bin": "0.20.1",
+    "fbjs-scripts": "3.0.1",
+    "flow-bin": "0.220.1",
     "graphql": "0.4.13",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
@@ -57,8 +57,13 @@
     "webpack-stream": "^2.1.0"
   },
   "devEngines": {
-    "node": "4.x",
-    "npm": "2.x"
+    "node": "20.x",
+    "npm": "10.x"
+  },
+  "overrides": {
+    "gulp": {
+      "vinyl-fs": "4.0.0"
+    }
   },
   "jest": {
     "rootDir": "",
