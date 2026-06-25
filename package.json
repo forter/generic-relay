@@ -1,7 +1,7 @@
 {
-  "name": "generic-relay",
+  "name": "@forter/generic-relay",
   "description": "A modified version of Relay to work without React",
-  "version": "0.1.0",
+  "version": "0.1.0-assaf-nodejs20",
   "keywords": [
     "graphql",
     "react",
